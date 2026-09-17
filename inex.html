@@ -12,7 +12,7 @@
         <p>Gerenciador de jogos, filme e séries</p>
     </header>
     <main class="container">
-        <section clas="painel_cadastro">
+        <section clas="painel-cadastro">
             <h2>Adicionar a lista de Midia</h2>
             <for action=""id="form_midia">
                 <input type="text" id="titulo" placeholder="Ex: Mortal Kombat"required>
@@ -22,9 +22,11 @@
                     <option value="Filmes"></option>
                     <option value="Séries"></option>
                  </select>
-                    <input type="text" id="" placeholder="">
-                    <input type="button" id="" min=""required>
-                    max="" placeholder=""required
+                    <input type="text" id="plataforma" placeholder="Ex:netflix, app store">
+                    <input type="text" id="nota" step="0.1" min="0"
+                    max="9.5" placeholder="Ex:0 a 9.5"required>
+                    <button class="bnt-salvar">Adicionar</button>
+                    
             </for>
         </section>
         <section class="painel.catalogo">
