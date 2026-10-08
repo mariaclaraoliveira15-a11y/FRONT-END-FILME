@@ -9,15 +9,15 @@
 <body>
     <header>
         <h1>Hub de Midias</h1>
-        <p>Gerenciador de jogos, filme e séries</p>
+        <p>Gerenciador de jogos, filme e séries</p>document.getElementById('from-midia').requestFullscreen();
     </header>
     <main class="container">
         <section clas="painel-cadastro">
             <h2>Adicionar a lista de Midia</h2>
-            <for action=""id="form_midia">
+            <form action=""id="form_midia" onsubmit="adicionarItem(event)"> 
                 <input type="text" id="titulo" placeholder="Ex: Mortal Kombat"required>
                 <select id="categoria" required>
-                    <option value="categoria">categoria</option>
+                    <option value="">categoria</option>
                     <option value="Jogos">Jogos</option>
                     <option value="Filmes"></option>
                     <option value="Séries"></option>
@@ -27,10 +27,10 @@
                     max="9.5" placeholder="Ex:0 a 9.5"required>
                     <button class="bnt-salvar">Adicionar</button>
                     
-            </for>
+            </form>
         </section>
         <section class="painel.catalogo">
-            <div class="filtros">
+            <div class="filtros">document.getElementById('from-midia').requestFullscreen();
                 <button>Todos</button>
                 <button>Jogos</button>
                 <button>Séries</button>
@@ -38,8 +38,8 @@
             </div>
             <div id="catalogo-grid" class="grid">
                 <!--Os card serão exibidos aqui-->
-            </div>
-        </section>
+            </div>document.getElementById('from-midia').requestFullscreen();
+        </section>document.getElementById('from-midia').requestFullscreen();
     </main>
     <script src="script.js"></script>
 </body>
