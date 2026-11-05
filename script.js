@@ -22,29 +22,29 @@ async function carregarCatalogo(){
 }
 
 //Método POST
-async function adicionarItem(){
+async function adicionarItem(event){
     event.preventDefault();
 
     const novoItem = {
-        id: Date.now
-        titulo:document.getElementById('titulo').value,
-        categoria:document.getElementById('').value,
-        plataformanota:document.getElementById ('plataforma').value,
+        id: Date.now() ,
+        titulo: document.getElementById('titulo').value,
+        categoria: document.getElementById('categoria').value,
+        plataforma: document.getElementById('plataforma').value,
         nota: parseFloat(document.getElementById('nota').value),
-        status:"jogando"
+        status: "Jogando"
     };
     try{
         colecaoMidia.push(novoItem);
         renderizarGrid(colecaoMidia);
 
         document.getElementById('from-midia').requestFullscreen();
-        alert('Item adicionado a lista com sucesso!')
+        alert('Item adicionado á lista com sucesso!')
     }catch(erro){
-
+        
         alert("Erro ao enviar requisição")//POST
+
     }
 }
-
 function renderizarGrid(lista){
     const container = document.getElementById('catalogo-grid');
     container.innerHTML = '';
@@ -58,10 +58,10 @@ function renderizarGrid(lista){
         const card = document.createElement('div');
         card.className = 'card';
 
-        card.innerHTML=`
-        ${item.capa?`<img src="${item.capa}"alt="${item.titulo}" class="capa-midia"`:''}
+        card.innerHTML = `
+        ${item.capa ?` <img> src="${item.capa}" alt="${item.titulo}" class="capa-midia"`:''}
         <div>
-            <spam class="tag-categoria">${item.categoria}</span>
+            <span class="tag-categoria">${item.categoria}</span>
             <h3>${item.titulo}</h3>
             <p class="info">Plataforma: ${item.plataforma}</p>
             <p class="info">Nota: <span class="nota">${item.nota.toFixed(1)}</p>
@@ -77,3 +77,20 @@ function renderizarGrid(lista){
 //Executa a unção e carregarCatalogo quando inicia a página
 document.addEventListener('DOMContentLoaded',carregarCatalogo);
 
+/*Método PATCH: Alterar o status, como jogando assistindo, etc...*/
+async function alterarStatus(id) {
+    const item = colecaoMidia.find(m => m.id === id);
+    if(!item) return;
+
+    //Alterar o status sequencialmente
+    const statusOpcoes = ["Jogar","Jogando","Jogado","Assistir","Assistindo","assistido"];
+    const proximoStatus = statusOpcoes[(statusOpcoes.indexOf(item.status)+1)%statusOpcoes.length];
+
+    try{
+        item.status = proximoStatus;
+        renderizarGrid(colecaoMidia);
+    }catch(erro){
+        alert("Erro ao atualizar status");
+    }
+    
+}
